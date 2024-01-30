@@ -12,7 +12,7 @@ async function sendHttpRequest(url, config) {
 }
 
 export default function useHttp(url, config, initialData) {
-  const [error, setError] = useState();
+  const [error, setError] = useState('');
   const [data, setData] = useState(initialData);
   const [isLoading, setIsLoading] = useState(false);
 

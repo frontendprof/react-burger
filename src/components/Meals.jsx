@@ -1,5 +1,6 @@
 import MealItem from './MealItem.jsx';
 import useHttp from '../hooks/useHttp.js';
+import Error from './Error.jsx';
 
 const requestConfig = {};
 
@@ -12,6 +13,10 @@ const Meals = () => {
 
   if (isLoading) {
     return <p className="center">Data fetching in progress ...</p>;
+  }
+
+  if (error) {
+    <Error title="An error while catching meal data" message={error} />;
   }
   return (
     <ul id="meals">
