@@ -40,6 +40,9 @@ function cartReducer(state, action) {
     }
     return { ...state, items: updatedItems };
   }
+  if (action.type === 'CLEAR') {
+    return { ...state, items: [] };
+  }
 
   return state;
 }
@@ -55,10 +58,15 @@ export function CartContextProvider({ children }) {
     cartDispatch({ type: 'REMOVE', id });
   }
 
+  function clearCart() {
+    cartDispatch({ type: 'CLEAR' });
+  }
+
   const cartContext = {
     items: cartState.items,
     addItem,
     removeItem,
+    clearCart,
   };
   return (
     <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
